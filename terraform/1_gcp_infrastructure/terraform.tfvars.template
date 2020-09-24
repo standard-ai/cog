@@ -1,0 +1,85 @@
+# GCP Project ID
+gcp_project_id = ""
+
+# GCP Storage Bucket Name
+gcp_storage_bucket_name = "example-vault"
+
+# GCP Cog Storage Bucket Name
+gcp_cog_storage_bucket_name = "example-cog"
+
+# GCP Storage Bucket Location
+gcp_storage_bucket_location = "US"
+
+# GCP Storage Bucket Storage Class
+gcp_storage_bucket_storage_class = "STANDARD"
+
+# GCP Firewall IP ranges (https://cloud.google.com/iap/docs/load-balancer-howto#firewall)
+# You probably don't want to change these
+gcp_iap_https_firewall_source_ranges = [
+  "130.211.0.0/22",
+  "35.191.0.0/16",
+]
+
+# GCP IAP Firewall IP ranges
+# You probably don't want to change these
+gcp_iap_all_firewall_source_ranges = [
+  "35.235.240.0/20",
+]
+
+# Region for first instance of vault
+rimary_region = "us-west1"
+
+# Region for second instance of vault
+secondary_region = "us-west2"
+
+# Service Account ID (must be unique in the project with a minimum character length)
+service_account_id = "hashicorp-vault"
+
+# Service Account Display Name
+service_account_display_name = "Hashicorp Vault"
+
+# The GCP Cloud KMS Key Ring to use for the Auto Unseal feature.
+vault_auto_unseal_key_ring = "hashivault"
+
+# The GCP Cloud KMS Crypto Key to use for the Auto Unseal feature.
+vault_auto_unseal_crypto_key_name = "auto_unseal"
+
+# Perhaps one of dev,qa,stage,prod
+environment = "dev"
+
+# Primary Zone (this should start with your primary_region)
+primary_zone = "us-west1-a"
+
+# Secondary Zone (this should start with your secondary_region)
+secondary_zone = "us-west2-a"
+
+# Machine Type
+machine_type = "n1-standard-2"
+
+# OS Image
+os_image = "ubuntu-1804-lts"
+
+# Internal only domain name (perhaps vault-internal.DOMAIN.TLD)
+vault_internal_domain = "vault-internal.example.com"
+
+# External domain name (perhaps vault.DOMAIN.TLD)
+vault_external_domain = "vault.example.com"
+
+# OAuth2 Client ID (Oauth must be set up by hand, see https://console.cloud.google.com/apis/credentials)
+oauth2_client_id = ""
+
+# OAuth2 Client Secret (Oauth must be set up by hand, see https://console.cloud.google.com/apis/credentials)
+oauth2_client_secret = ""
+
+# Vault IAM members
+vault_iam_members = ["user:sample@example.com"]
+
+# Subject string for self-signed certificate generation
+# Example: "C=US/ST=California/L=San Francisco/O=Standard Cognition"
+openssl_subject = "C=US/ST=California/L=San Francisco/O=ACME CO"
+
+# Members who get roles/owner (could be user:EMAIL@DOMAIN.TLD)
+iam_roles_owners = ["user:sample@example.com"]
+
+# Email address for Identity-Aware-Proxy Branding (could be user:EMAIL@DOMAIN.TLD)
+iap_email_address = "sample@example.com"

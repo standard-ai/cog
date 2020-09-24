@@ -1,0 +1,29 @@
+# Compose file version 3 reference
+# https://docs.docker.com/compose/compose-file/
+
+version: '3'
+
+services:
+  vault:
+    image: vault:latest
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./vault:/vault
+    command: vault server -config=/vault/config/vault.hcl
+    ports:
+      - "8200:8200"
+  cog_bastion:
+    build:
+      context: .
+      dockerfile: Dockerfile.bastion
+    ports:
+      - "2222:22"
+    hostname: cog_bastion
+  cog_target:
+    build:
+      context: .
+      dockerfile: Dockerfile.target
+    ports:
+      - "2223:22"
+    hostname: cog_target

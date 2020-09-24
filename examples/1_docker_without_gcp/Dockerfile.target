@@ -1,0 +1,19 @@
+FROM ubuntu:latest
+
+RUN apt-get -y update
+RUN apt-get -y install openssh-server nano
+
+RUN mkdir /etc/ssh/auth_principals
+RUN echo "ubuntu" > /etc/ssh/auth_principals/ubuntu
+
+RUN mkdir /var/run/sshd
+
+RUN /sbin/useradd -m ubuntu
+
+COPY sshd_config keys/trusted-user-ca-keys.pem /etc/ssh/
+COPY keys/target /etc/ssh/ssh_host_ed25519_key
+COPY keys/target.pub /etc/ssh/ssh_host_ed25519_key.pub
+COPY keys/target-cert.pub /etc/ssh/ssh_host_ed25519_key-cert.pub
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D", "-e"]

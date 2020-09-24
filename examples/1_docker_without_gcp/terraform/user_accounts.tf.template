@@ -1,0 +1,9 @@
+module "user_account_USERNAME" {
+  depends_on  = [vault_auth_backend.userpass]
+  source      = "./modules/user_accounts"
+  username    = "USERNAME"
+  password    = "PASSWORD"
+  unix_roles  = ["ops", "ubuntu"]
+  policies    = ["ssh-USERNAME", "ssh-hostkey"]
+  policy_path = "${vault_mount.ssh.path}/sign/USERNAME"
+}

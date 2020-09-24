@@ -1,0 +1,11 @@
+*.tfstate
+*.tfstate.backup
+*.plan
+terraform.tfvars
+
+.terraform/
+
+keys/
+user_accounts.tf
+scripts/build.sh
+build/

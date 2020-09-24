@@ -1,0 +1,2 @@
+# Allowed domains for SSH
+allowed_domains = ""

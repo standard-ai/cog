@@ -1,0 +1,17 @@
+# OAuth2 Client ID (Oauth must be set up by hand, see https://console.cloud.google.com/apis/credentials)
+oidc_client_id = ""
+
+# OAuth2 Client Secret (Oauth must be set up by hand, see https://console.cloud.google.com/apis/credentials)
+oidc_client_secret = ""
+
+# This is the same as your oidc_client_id, just in a list format
+reader_role_bound_audiences = []
+
+# Change vault.example.com to your external vault domain 
+reader_role_allowed_redirect_uris = ["https://vault.example.com:8200/ui/vault/auth/oidc/oidc/callback", "http://localhost:8250/oidc/callback"]
+
+# This should be a list of all of your valid email addresses
+role_members_default = [
+	"alice@example.com",
+	"bob@example.com",
+]

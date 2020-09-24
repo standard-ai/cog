@@ -1,0 +1,10 @@
+module "user_account_$USERNAME" {
+  source        = "./modules/user_accounts"
+  username      = "$USERNAME"
+  email         = "$EMAIL"
+  # In order to use the example in the examples/ folder, use this line:
+  # unix_roles = ["ops", "ubuntu"]
+  unix_roles = ["$ROLE1", "$ROLE2", ...]
+  oidc_mount_accessor = var.oidc_mount_accessor
+  policies      = ["admin", "ssh-hostkey", "ssh"]
+}
