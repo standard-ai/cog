@@ -7,5 +7,4 @@ terraform.tfvars
 
 keys/
 user_accounts.tf
-scripts/build.sh
 build/
