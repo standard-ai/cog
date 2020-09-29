@@ -48,14 +48,16 @@ hub release create\
  -a build/cog_${curr_version}_linux_amd64.tgz\
  -m $curr_version -t master $curr_version
 
-pwd=`pwd`
-cd ..
-mv ${pwd} cog-${curr_version}
-tar -zcvf cog-${curr_version}.tar.gz cog-${curr_version}/{CHANGELOG.md,LICENSE,Makefile,README.md,docs,examples,images,scripts,src,terraform}
-mv cog-${curr_version}.tar.gz cog-${curr_version}/build/cog-${curr_version}.tar.gz
-mv cog-${curr_version} ${pwd}
-cd ${pwd}
+# This code can be used to copy binaries and tarballs to GCS
 
-gsutil cp build/cog_${curr_version}_darwin_amd64/cog build/cog_${curr_version}_darwin_amd64/cog.version gs://${default_binaryGCSBucket}/${default_binaryGCSPath}darwin/
-gsutil cp build/cog_${curr_version}_linux_amd64/cog build/cog_${curr_version}_linux_amd64/cog.version gs://${default_binaryGCSBucket}/${default_binaryGCSPath}linux/
-gsutil cp build/cog-${curr_version}.tar.gz gs://${default_binaryGCSBucket}/${default_binaryGCSPath}/source/
+# pwd=`pwd`
+# cd ..
+# mv ${pwd} cog-${curr_version}
+# tar -zcvf cog-${curr_version}.tar.gz cog-${curr_version}/{CHANGELOG.md,LICENSE,Makefile,README.md,docs,examples,images,scripts,src,terraform}
+# mv cog-${curr_version}.tar.gz cog-${curr_version}/build/cog-${curr_version}.tar.gz
+# mv cog-${curr_version} ${pwd}
+# cd ${pwd}
+# 
+# gsutil cp build/cog_${curr_version}_darwin_amd64/cog build/cog_${curr_version}_darwin_amd64/cog.version gs://${default_binaryGCSBucket}/${default_binaryGCSPath}darwin/
+# gsutil cp build/cog_${curr_version}_linux_amd64/cog build/cog_${curr_version}_linux_amd64/cog.version gs://${default_binaryGCSBucket}/${default_binaryGCSPath}linux/
+# gsutil cp build/cog-${curr_version}.tar.gz gs://${default_binaryGCSBucket}/${default_binaryGCSPath}/source/
