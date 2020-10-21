@@ -6,9 +6,6 @@ install:	## Install local binary to ~/bin, /usr/local/bin, or $PREFIX
 
 help:	## Show this help
 
-release:	## Tag, build, and deploy official release
-release:	tag build_release deploy_release
-
 tag:	## Tag a release (auto-increment or use VERSION)
 	@scripts/tag.sh
 
@@ -18,11 +15,11 @@ build_release:	## Build binaries in build/ directory for an official release
 	@scripts/build.sh linux amd64
 	@scripts/build.sh linux 386
 
-deploy_release:	## Deploy the official release to github and GCS
-	@scripts/deploy_release.sh
+deploy_github:	## Deploy the official release to github
+	@scripts/deploy_github.sh
 
-deploy_homebrew: ## Deploy homebrew changes
-	@scripts/create_homebrew_file.sh
+deploy_gcs:	## Deploy the official release to github
+	@scripts/deploy_gcs.sh
 
 .PHONY: build help
 
