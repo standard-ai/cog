@@ -24,8 +24,6 @@ if [ -z $GCS_PATH ] ; then
 	echo "GCS_PATH is not set. Quitting."
 	exit 1
 fi
-echo go
-exit
 
 # Fetch remote tags
 git fetch --prune-tags --prune --tags
