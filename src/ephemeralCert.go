@@ -39,6 +39,15 @@ func pemEncodeRSAKey(key *rsa.PrivateKey) []byte {
 	})
 }
 
+func caSubject() pkix.Name {
+	return pkix.Name{
+		Organization: []string{"Cog CA"},
+		Country:      []string{"US"},
+		Province:     []string{"California"},
+		Locality:     []string{"San Francisco"},
+	}
+}
+
 func certSubject() pkix.Name {
 	return pkix.Name{
 		Organization: []string{"Cog"},
@@ -51,7 +60,7 @@ func certSubject() pkix.Name {
 func newEphemeralCA() *ephemeralCA {
 	template := &x509.Certificate{
 		SerialNumber:          big.NewInt(0xfeed),
-		Subject:               certSubject(),
+		Subject:               caSubject(),
 		NotBefore:             time.Now(),
 		NotAfter:              time.Now().AddDate(10, 0, 0),
 		KeyUsage:              x509.KeyUsageCertSign,
