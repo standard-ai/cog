@@ -58,15 +58,17 @@ func (o *Oidc) authUrl(data map[string]interface{}) {
 	if err != nil {
 		log.Fatalf("Vault error accessing %s: %v", path, err)
 	}
-	authUrl := secret.Data["auth_url"]
-	err = browser.OpenURL(authUrl.(string))
+	authURL := secret.Data["auth_url"].(string)
+	authURL = authURL + "&prompt=consent"
+
+	err = browser.OpenURL(authURL)
 	if err != nil {
 		fmt.Println("Could not use default web browser: ", err)
 
-		fmt.Printf("Authenticate at this url: %q\n", authUrl)
+		fmt.Printf("Authenticate at this url: %q\n", authURL)
 
 	}
-	url, err := url.Parse(fmt.Sprintf("%v", authUrl))
+	url, err := url.Parse(fmt.Sprintf("%v", authURL))
 	o.Data.Set("nonce", url.Query().Get("nonce"))
 }
 
