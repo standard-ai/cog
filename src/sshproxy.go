@@ -67,7 +67,7 @@ var sshProxyCommand = &cobra.Command{
 		}
 		if verbose > 0 {
 			log.Info("bastion user: ", bastionUser)
-			log.Info("SSH_USER:", sshUser)
+			log.Info("ssh user: ", sshUser)
 		}
 		err = sshGo(bastionUser, certGroup, append([]string{bastionUser + "@" + bastionHost}, args...))
 		if err != nil {
