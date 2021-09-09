@@ -5,8 +5,8 @@ go 1.13
 require (
 	cloud.google.com/go v0.56.0
 	cloud.google.com/go/storage v1.6.0
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gobwas/glob v0.2.3
+	github.com/golang-jwt/jwt/v4 v4.0.0
 	github.com/golang/protobuf v1.4.0 // indirect
 	github.com/hashicorp/vault/api v1.0.5-0.20200317185738-82f498082f02
 	github.com/pete0emerson/browser v0.0.0-20200623235439-d12a9c87f522

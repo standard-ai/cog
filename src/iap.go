@@ -12,7 +12,7 @@ import (
 	credentials "cloud.google.com/go/iam/credentials/apiv1"
 	credentialspb "google.golang.org/genproto/googleapis/iam/credentials/v1"
 
-	jwt "github.com/dgrijalva/jwt-go"
+	jwt "github.com/golang-jwt/jwt/v4"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
