@@ -20,7 +20,8 @@ var versionCommand = &cobra.Command{
 }
 
 func getCurrentVersion() (version string, date string) {
-	path := viper.GetString("gcs_binary_path")
+	// Remove the suffix in case it is added in the configuration file
+	path := strings.TrimSuffix(viper.GetString("gcs_binary_path"), "/")
 	binaryGCSBucket := viper.GetString("gcs_binary_bucket")
 
 	if path == "" || binaryGCSBucket == "" {
@@ -31,9 +32,9 @@ func getCurrentVersion() (version string, date string) {
 	}
 
 	if runtime.GOOS == "linux" {
-		path = path + "linux/cog.version"
+		path = path + "/linux/cog.version"
 	} else {
-		path = path + "darwin/cog.version"
+		path = path + "/darwin/cog.version"
 	}
 
 	versionDataBytes, err := getFileFromGCS(binaryGCSBucket, path)

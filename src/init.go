@@ -118,8 +118,10 @@ var initCommand = &cobra.Command{
 		log.Info("Saving GCS Binary Bucket: ", binaryGCSBucket)
 		viper.Set("gcs_binary_bucket", binaryGCSBucket)
 
-		binaryGCSPath = default_binaryGCSPath
+		// Remove the suffix in case it is added in the configuration file
+		binaryGCSPath = strings.TrimSuffix(default_binaryGCSPath, "/")
 		log.Info("Saving GCS Binary Path: ", binaryGCSPath)
+
 		viper.Set("gcs_binary_path", binaryGCSPath)
 
 		err := viper.WriteConfig()

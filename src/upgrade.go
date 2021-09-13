@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+	"strings"
 	"time"
 
 	log "github.com/sirupsen/logrus"
@@ -27,7 +28,8 @@ var upgradeCommand = &cobra.Command{
 		if verbose > 0 {
 			log.Infof("buildVersion: %s buildDate: %s buildHash: %s buildOS: %s", buildVersion, buildDate, buildHash, buildOS)
 		}
-		path := viper.GetString("gcs_binary_path")
+		// Remove the suffix in case it is added in the configuration file
+		path := strings.TrimSuffix(viper.GetString("gcs_binary_path"), "/")
 		binaryGCSBucket := viper.GetString("gcs_binary_bucket")
 
 		if path == "" || binaryGCSBucket == "" {
@@ -40,9 +42,9 @@ var upgradeCommand = &cobra.Command{
 			log.Printf("Upgrading to %s ...\n", currentBuildVersion)
 
 			if runtime.GOOS == "linux" {
-				path = path + "linux/cog"
+				path = path + "/linux/cog"
 			} else {
-				path = path + "darwin/cog"
+				path = path + "/darwin/cog"
 			}
 
 			fullPath, err := exec.LookPath(os.Args[0])
