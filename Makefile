@@ -12,6 +12,7 @@ tag:	## Tag a release (auto-increment or use VERSION)
 build_release:	## Build binaries in build/ directory for an official release
 	rm -rf build/
 	@scripts/build.sh darwin amd64
+	@scripts/build.sh darwin arm64
 	@scripts/build.sh linux amd64
 	@scripts/build.sh linux 386
 
