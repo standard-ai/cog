@@ -57,5 +57,7 @@ mv cog-${curr_version} ${pwd}
 cd ${pwd}
 
 gsutil cp build/cog_${curr_version}_darwin_amd64/cog build/cog_${curr_version}_darwin_amd64/cog.version gs://${GCS_BUCKET}/${GCS_PATH}/darwin/
+gsutil cp build/cog_${curr_version}_darwin_arm64/cog build/cog_${curr_version}_darwin_arm64/cog.version gs://${GCS_BUCKET}/${GCS_PATH}/darwin/
 gsutil cp build/cog_${curr_version}_linux_amd64/cog build/cog_${curr_version}_linux_amd64/cog.version gs://${GCS_BUCKET}/${GCS_PATH}/linux/
+gsutil cp build/cog_${curr_version}_linux_386/cog build/cog_${curr_version}_linux_386/cog.version gs://${GCS_BUCKET}/${GCS_PATH}/linux/
 gsutil cp build/cog-${curr_version}.tar.gz gs://${GCS_BUCKET}/${GCS_PATH}/source/

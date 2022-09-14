@@ -44,6 +44,7 @@ fi
 
 hub release create\
  -a build/cog_${curr_version}_linux_386.tgz\
- -a build/cog_${curr_version}_darwin_amd64.zip\
  -a build/cog_${curr_version}_linux_amd64.tgz\
+ -a build/cog_${curr_version}_darwin_amd64.zip\
+ -a build/cog_${curr_version}_darwin_arm64.zip\
  -m $curr_version -t master $curr_version
