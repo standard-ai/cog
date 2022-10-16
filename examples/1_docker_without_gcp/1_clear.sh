@@ -3,11 +3,14 @@
 # Remove any existing cog SSH keys
 rm -rf keys terraform/keys
 
-# Remove any existing terraform directory
-rm -rf terraform/.terraform
+# Remove existing terraform directory and lock
+rm -rf terraform/.terraform terraform/.terraform.lock.hcl
 
 # Stop and remove containers, networks, images, and volumes 
 docker-compose down
+
+# Remove vault data
+sudo rm -rf vault/data/
 
 # Remove any persistent vault data
 rm -rf vault/{data,file,logs} VAULT_PASSWORD vault_initialization.log
