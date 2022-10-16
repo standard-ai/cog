@@ -27,7 +27,7 @@ variable "gcp_storage_bucket_storage_class" {
 
 variable "gcp_iap_https_firewall_source_ranges" {
   description = "GCP Firewall IP ranges (https://cloud.google.com/iap/docs/load-balancer-howto#firewall)"
-  type        = list(string)
+  type        = tolist([string])
   default = [
     "130.211.0.0/22",
     "35.191.0.0/16",
@@ -36,7 +36,7 @@ variable "gcp_iap_https_firewall_source_ranges" {
 
 variable "gcp_iap_all_firewall_source_ranges" {
   description = "GCP IAP Firewall IP ranges"
-  type        = list(string)
+  type        = tolist([string])
   default = [
     "35.235.240.0/20",
   ]
@@ -131,7 +131,7 @@ variable "oauth2_client_secret" {
 
 variable "vault_iam_members" {
   description = "Vault IAM members"
-  type        = list(string)
+  type        = tolist([string])
 }
 
 variable "openssl_subject" {
@@ -141,7 +141,7 @@ variable "openssl_subject" {
 
 variable "iam_roles_owners" {
   description = "Members who get roles/owner"
-  type        = list(string)
+  type        = tolist([string])
 }
 
 variable "iap_email_address" {
