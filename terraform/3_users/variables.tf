@@ -17,15 +17,15 @@ variable "oidc_default_role" {
 }
 
 variable "reader_role_bound_audiences" {
-  type = list(string)
+  type = tolist([string])
 }
 
 variable "reader_role_allowed_redirect_uris" {
-  type = list(string)
+  type = tolist([string])
 }
 
 variable "role_members_default" {
-  type = list(string)
+  type = tolist([string])
 }
 
 variable "oidc_mount_accessor" {

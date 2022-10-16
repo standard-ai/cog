@@ -14,7 +14,7 @@ resource "vault_ssh_secret_backend_role" "user_account" {
   backend                 = "ssh"
   key_type                = "ca"
   allow_user_certificates = true
-  allowed_users           = join(",", compact(concat(list(var.username), var.unix_roles)))
+  allowed_users           = join(",", compact(concat(tolist([var.username]), var.unix_roles)))
 
   default_extensions = {
     "permit-agent-forwarding" = ""
@@ -23,6 +23,6 @@ resource "vault_ssh_secret_backend_role" "user_account" {
     "permit-X11-forwarding"   = ""
   }
 
-  default_user = join(",", compact(concat(list(var.username), var.unix_roles)))
+  default_user = join(",", compact(concat(tolist([var.username]), var.unix_roles)))
   ttl          = var.ssh_sign_ttl
 }
